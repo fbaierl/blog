@@ -28,15 +28,15 @@ class PathSum2Suite extends munit.FunSuite {
   }
 
   test("parallel and sequential version of path sum should return same result") {
-    val randTree = constructTestTree(11) // 2^10 nodes (1024=
+    val randTree = constructTestTree(11)
     assertEquals(pathSumSeq(randTree, 20), pathSum(randTree, 20))
   }
 
   test("the parallel algorithm should be faster than the sequential algorithm for large data input") {
 
     val standardConfig = config(
-      Key.exec.minWarmupRuns := 10,
-      Key.exec.maxWarmupRuns := 30,
+      Key.exec.minWarmupRuns := 20,
+      Key.exec.maxWarmupRuns := 40,
       Key.exec.benchRuns := 15,
       Key.verbose := false
     ) withWarmer Warmer.Default()
